@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+<script>
+//문제 개수
+document.write("몇 문제를 출제 하시겠습니까 ? ")
+document.write('<input id="QLng" type="text" onkeydown="QstLng();"><br>')
+
+function QstLng()
+  { if(event.keyCode == 13){
+    var Ql1  = Number(document.querySelector('#QLng').value)*2+1;
+    var Ql2  = Number(document.querySelector('#QLng').value);
+    window.Ql3 = Ql1 ; window.Ql4 = Ql2 ;
+    //매소드 수정필요
+    document.body.appendChild(QstDta()+Qst()+Ans());};}
+
+  // 소스 dta:난수생성
+    var RnNo = {};
+    function QstDta()
+    { for (var a =1; a < Ql3;  a++) {
+     RnNo['#' + a] = Math.floor(Math.random()*10);
+    }}
+
+//문제 V_1.00
+  function Qst()
+  {  document.write(" 다음 문제 알맞은 답을 구하세요.<br>");
+    for (var a = 1; a < Ql3;  a+=2) {
+  var a1 = a+1;
+document.write([parseInt(a1/2)]+"번 문제> "+RnNo['#' + a]+" + "+RnNo['#' + a1]+ " = <br>");
+}}
+
+
+/*문제 V_2.00
+function Qst(){
+document.write(" 다음 문제 알맞은 답을 구하세요.<br>");
+var docFrag = document.createDocumentFragment();
+for (var a=1; a < Ql3 ; a+=2){
+var a1 = a+1 ;
+var elem = document.createElement('input');
+elem.type = 'button';
+elem.value = [parseInt(a1/2)]+'번 문제> '+RnNo['#' + a]+" + "+RnNo['#' + a1]+ " = ";
+docFrag.appendChild(elem);
+}
+document.body.appendChild(docFrag); }
+*/
+//답
+
+var An = {};
+function Ans()
+{for (var a =2; parseInt(a/2) < Ql4+1; a+=2) {
+  var b = parseInt(a/2); var c = (a-1) ; var c1 = a ;
+  An[ b +'번 답'] = RnNo['#'+c] + RnNo['#'+c1]
+}}
+/*
+let randomArray = [];
+for (let i = 0; i < 10; i++) {
+  randomArray.push(Math.floor(Math.random() * 10));
+}
+*/
+</script>
+  </body>
+</html>
